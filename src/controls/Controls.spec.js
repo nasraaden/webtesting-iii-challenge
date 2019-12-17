@@ -16,7 +16,7 @@ test("Open and close gate buttons work", () => {
 })
  
 test("Lock and unlock buttons work", () => {  
-    const {getByText, rerender} = render(<Controls locked={false} />)
+    const {getByText, rerender} = render(<Controls locked={false} />);
     const unlockButton = getByText(/lock/i);
     fireEvent.click(unlockButton);
     getByText(/lock/i);
@@ -29,16 +29,16 @@ test("Lock and unlock buttons work", () => {
 
 test("Open button is disabled if gate is locked", () => {
     const toggleClosed= jest.fn();
-    const {getByText} = render(<Controls closed={true} locked={true} toggleClosed={toggleClosed} />)
-    const openDisabled = getByText(/open/i)
+    const {getByText} = render(<Controls closed={true} locked={true} toggleClosed={toggleClosed} />);
+    const openDisabled = getByText(/open/i);
     fireEvent.click(openDisabled);
     expect(toggleClosed).not.toHaveBeenCalled();
 })
 
 test("Lock button is disabled if gate is open", () => {
     const toggleLocked = jest.fn();
-    const {getByText} = render(<Controls closed={false} locked={false} toggleLocked={toggleLocked} />)
-    const lockDisabled = getByText(/lock/i)
+    const {getByText} = render(<Controls closed={false} locked={false} toggleLocked={toggleLocked} />);
+    const lockDisabled = getByText(/lock/i);
     fireEvent.click(lockDisabled);
     expect(toggleLocked).not.toHaveBeenCalled();
 })
